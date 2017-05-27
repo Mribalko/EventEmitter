@@ -4,6 +4,7 @@ class ChatApp extends EventEmitter {
   /**
    * @param {String} title
    */
+  //test
   constructor(title) {
     super();
 
