@@ -12,26 +12,26 @@ module.exports.chatApp = class ChatApp extends EventEmitter {
 
         // Посылать каждую секунду сообщение
         setInterval(() => {
-            this.emit('message', this.title);
+            this.emit('message');
         }, 1000);
     };
 
     close() {
-        this.emit('close', this);
+        this.emit('close');
     };
 };
 
 
-module.exports.chatOnMessage = (title) => {
- console.log(`${title}: ping-pong`);
+module.exports.chatOnMessage = function(){
+ console.log(`${this.title}: ping-pong`);
  };
 
-module.exports.readyToAnswer = (title) => {
- console.log(`${title}: Готовлюсь к ответу`);
+module.exports.readyToAnswer = function(){
+ console.log(`${this.title}: Готовлюсь к ответу`);
  };
 
-module.exports.chatOnClose = (chat) => {
- console.log(`Чат ${chat.title} закрывается :(`);
- chat.removeAllListeners('message', 'close');
+module.exports.chatOnClose = function(){
+ console.log(`Чат ${this.title} закрывается :(`);
+ this.removeAllListeners('message', 'close');
  };
 
